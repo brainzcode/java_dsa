@@ -100,3 +100,46 @@ class PascalTriangle2 {
     }
 }
 
+
+class Solution {
+    public int[][] solve(int A) {
+        int[][] pascalTriangle = new int[A][];
+
+        for (int i = 0; i < A; i++) {
+            pascalTriangle[i] = new int[i + 1]; // Row i has i+1 elements
+
+            // Fill the first and last element of each row with 1
+            pascalTriangle[i][0] = 1;
+            pascalTriangle[i][i] = 1;
+
+            // Fill the elements in the middle of the row
+            for (int j = 1; j < i; j++) {
+                pascalTriangle[i][j] = pascalTriangle[i - 1][j - 1] + pascalTriangle[i - 1][j];
+            }
+        }
+
+        return pascalTriangle;
+    }
+
+}
+
+class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Example input
+        int A = 5;
+
+        // Calling the solve method to generate Pascal's triangle
+        int[][] pascalTriangle = solution.solve(A);
+
+        // Printing the generated Pascal's triangle
+        for (int i = 0; i < A; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print(pascalTriangle[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
