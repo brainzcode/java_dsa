@@ -130,3 +130,47 @@ class MainCounterClockwiseMatrixRotation {
     }
 }
 
+
+class OneEightyDegreeMatrixRotation {
+    public void rotate(ArrayList<ArrayList<Integer>> a) {
+        reverseRows(a);
+        reverseColumns(a);
+    }
+
+    private void reverseRows(ArrayList<ArrayList<Integer>> a) {
+        Collections.reverse(a);
+    }
+
+    private void reverseColumns(ArrayList<ArrayList<Integer>> a) {
+        for (ArrayList<Integer> row : a) {
+            Collections.reverse(row);
+        }
+    }
+}
+
+class MainOneEightyDegreeMatrixRotation {
+    public static void main(String[] args) {
+        // Create a sample matrix
+        ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
+        matrix.add(new ArrayList<>(Arrays.asList(1, 2, 3)));
+        matrix.add(new ArrayList<>(Arrays.asList(4, 5, 6)));
+        matrix.add(new ArrayList<>(Arrays.asList(7, 8, 9)));
+
+        System.out.println("Original Matrix:");
+        printMatrix(matrix);
+
+        // Rotate the matrix
+        OneEightyDegreeMatrixRotation rotator = new OneEightyDegreeMatrixRotation();
+        rotator.rotate(matrix);
+
+        System.out.println("Rotated Matrix:");
+        printMatrix(matrix);
+    }
+
+    // Helper function to print the matrix
+    private static void printMatrix(ArrayList<ArrayList<Integer>> matrix) {
+        for (ArrayList<Integer> row : matrix) {
+            System.out.println(row);
+        }
+    }
+}
